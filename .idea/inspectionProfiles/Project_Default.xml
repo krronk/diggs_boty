@@ -1,0 +1,27 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="requests" />
+          <option value="websocket-client" />
+          <option value="lightweight-charts" />
+          <option value="pandas" />
+          <option value="numpy" />
+          <option value="python-dotenv" />
+          <option value="os" />
+          <option value="dotenv" />
+          <option value="time" />
+          <option value="json" />
+          <option value="hmac" />
+          <option value="hashlib" />
+          <option value="threading" />
+          <option value="websocket" />
+          <option value="plotly" />
+          <option value="datetime" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

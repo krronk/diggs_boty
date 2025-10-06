@@ -1,0 +1,14 @@
+{
+  "symbol": "SOLUSDT",
+  "category": "linear",
+
+  "margin": 100,
+  "leverage": 20,
+
+  "take_profit_threshold": 0.00085,
+  "stop_loss_threshold": 0.4
+
+
+}
+
+
