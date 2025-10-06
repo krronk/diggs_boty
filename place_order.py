@@ -1,22 +1,10 @@
-from pybit.unified_trading import HTTP
-import os
+from client import http_client
+from imports import *
 
-# Set your API credentials
-api_key = os.getenv("BYBIT_API_KEY")
-api_secret = os.getenv("BYBIT_API_SECRET")
-
-# Initialize Bybit session (mainnet endpoint)
-session = HTTP(testnet=False,api_key=api_key,api_secret=api_secret,)
-
-symbol = "SOLUSDT"
-qty = 10
-entry_price = 24.50
-tp_price = 22.00
-sl_price = 25.50
-leverage = 10
+session = http_client
 
 # 1. Check if there is an existing position
-pos_info = session.get_positions(category="linear",symbol=symbol,)
+pos_info = session.get_positions(category=config.category,symbol=config.symbol,)
 positions = pos_info['result']['list']
 open_pos_size = 0
 for pos in positions:
@@ -27,11 +15,11 @@ for pos in positions:
 
 if open_pos_size == 0:
     # 2. Set leverage
-    session.set_leverage(category="linear",symbol=symbol,buyLeverage=leverage,sellLeverage=leverage,)
-    print("Leverage set to", leverage, "x.")
+    session.set_leverage(category=config.category,symbol=config.symbol,buyLeverage=config.leverage,sellLeverage=config.leverage,)
+    print("Leverage set to", config.leverage, "x.")
 
     # 3. Place short order with TP/SL attached
-    order = session.place_order( category="linear",symbol=symbol,side="Sell",orderType="Limit",qty=qty,
+    order = session.place_order( category=config.category,symbol=config.symbol,side="Sell",orderType="Limit",qty=qty,
                                     price=entry_price,timeInForce="PostOnly",reduceOnly=False,
                                     takeProfit=tp_price,stopLoss=sl_price,tpTriggerBy="LastPrice",slTriggerBy="LastPrice",)
     print("Short entry order placed:", order)
